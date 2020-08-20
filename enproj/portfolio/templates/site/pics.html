@@ -1,0 +1,17 @@
+{% extends 'site/base.html' %}
+{% block content %}
+{% for post in showpics %}
+{% if forloop.first %}
+<div style="background-color: #ba3a39;width:10%;margin-left:1%;margin-bottom:2px;"> </div>
+<h2 style="margin-left:35px;">{{post.category}}</h2>
+<div style="background-color: #ba3a39;width:10%;margin-left:2%;margin-bottom:10px;"> </div>
+{% endif %}
+{% endfor %}
+<div id="gallery-content-center" style="position: relative; overflow: hidden; height: 1200px;" class="gallery-content-center-full isotope">
+    {% for post in showpics %}
+    <a class="example-image-link" href="{{post.image.url}}" data-lightbox="example-set" data-title="{{post.name}}<br>{{post.description}}">
+        <img class="example-image" src="{{post.image.url}}" class="all landscape isotope-item"  style="position: absolute; left: 0px; top: 0px; transform: translate3d(620px, 420px, 0px) scale3d(1, 1, 1); opacity: 1;" alt=""/>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

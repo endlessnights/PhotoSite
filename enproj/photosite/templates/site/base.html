@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+	<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/js/all.js"></script>
+	<link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/animated-masonry-gallery.css' %}" />
+	<script type="text/javascript" src="{% static 'js/jquery-2.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/animated-masonry-gallery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/lightbox.min.js' %}"></script>
+	<meta charset="UTF-8">
+    <title>SXRT gallery</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ededef;">
+      <!-- background-color: #e3f2fd; -->
+      <a class="navbar-brand" href="/" style="background-color: #6bafb8; padding:10px;">SXRT gallery</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul id="ultype1" class="navbar-nav mr-auto">
+            <li class="nav-item"> <a class="nav-link" href="/">Home</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="#">Weird City</a> </li>
+            <!--<li class="nav-item"> <a class="nav-link" href="#">Projects</a> </li>
+            <li class="nav-item"> <a class="nav-link" href="#">Stories</a> </li>-->
+            <li class="nav-item"> <a class="nav-link" href="/gallery">Galleries</a> </li>
+            <!--<div class="btn-group" role="group">
+                <button id="btnGroupDrop0" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Galleries
+                </button>
+                <div class="dropdown-menu" style="min-width: 8rem;" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="/3d"><button type="button" class="btn btn-danger">CGI</button></a>
+                    <a class="dropdown-item" href="#" target="_blank"><button type="button" class="btn btn-danger">Travel</button></a>
+                    <a class="dropdown-item" href="#" target="_blank"><button type="button" class="btn btn-danger">Video</button></a>
+                </div>
+            </div>-->
+         </ul>
+         <span class="navbar-text">
+            <div class="btn-group" role="group">
+               <button type="button" class="btn btn-success">
+               <a style="color:white;" href="/add">Добавить Категорию</a>
+               </button>
+               <button type="button" class="btn btn-success">
+                  <a style="color:white;" href="/addobj">Добавить Фото</a>
+               </button>
+               <div class="btn-group" role="group" style="z-index:99999;">
+                  <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {%if user.userprofile.avatar %}
+                  <img width="30" height="30" src="{{user.userprofile.avatar.url}}">
+                  {%endif%}
+                  {{request.user.get_short_name}} [{{request.user.username}}]
+                  </button>
+                  <div class="dropdown-menu" style="min-width: 8rem;" aria-labelledby="btnGroupDrop1">
+                     <a class="dropdown-item" href="">Профиль</a>
+                     <a class="dropdown-item" href="user/{{request.user}}/update/">Изм. профиль</a>
+                     <a class="dropdown-item" href="/profile/edit/">Настройки</a>
+                     <a class="dropdown-item" href="/logout">Выйти</a>
+                  </div>
+               </div>
+            </div>
+         </span>
+      </div>
+   </nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>

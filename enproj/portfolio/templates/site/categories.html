@@ -1,0 +1,39 @@
+{% extends 'site/base.html' %}
+{% block content %}
+{% for subcategory in showposts %}
+{% if forloop.first %}
+        {% load static %}
+<div class="row" style="margin-left:30px;">
+    <div class="col-sm-2">
+        <h2>{{subcategory.category}}</h2>
+    </div>
+    <div class="col-sm-10">
+        {{subcategory.category.description}}
+    </div>
+</div>
+    {% endif %}
+{% endfor %}
+<div class="row" style="margin:20px;">
+{% for subcategory in showposts %}
+    <div class="col-sm-6">
+        <a href="{{subcategory.slug}}">
+        {% if subcategory.cover %}
+        <img class="portfolio-grid-image" width="100%" src="{{subcategory.cover.url}}">
+        {% endif %}
+        <div class="row">
+            <div class="col-sm-6">
+                <h4 style="color:#1c2d34;">{{subcategory.name}}</h4>
+            </div>
+            <div class="col-sm-6">
+                {%if subcategory.posts_count >= 1 %}
+                <p style="float:right"><i>Post count: {{subcategory.posts_count}}</i></p>
+                {% endif %}
+            </div>
+        </div></a>
+        {% if subcategory.description%}
+            <p style="color:#1c2d34;" align="justify">{{subcategory.description}}</p>
+        {% endif %}
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
