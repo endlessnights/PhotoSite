@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('photosite.urls')),
     path('', include('portfolio.urls')),
     path('', include('blog.urls')),
+
 ]

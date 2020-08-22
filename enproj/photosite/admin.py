@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import categories, post, sitesettings, userprofile
+from .models import categories, post, userprofile
 
 
 @admin.register(categories)
@@ -40,17 +40,4 @@ class PublishAdmin(admin.ModelAdmin):
         'fblink',
         'tglink',
         'email',
-    ]
-
-
-@admin.register(sitesettings)
-class PublishAdmin(admin.ModelAdmin):
-    list_display = [
-        'name',
-        'subname',
-        'icon',
-        'logobig',
-        'logo',
-        'copyright',
-        'customcss',
     ]

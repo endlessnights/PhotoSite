@@ -1,0 +1,47 @@
+{% extends 'site/base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-8" style="margin-left:30px;">
+        <div class="cols-sm-4">
+            <h1 style="margin:15px;">Blog</h1>
+        </div>
+        {% for blogpost in categoryposts %}
+        <div class="col-sm-12">
+        <div class="card mb-4">
+            {% if blogpost.cover %}
+            <img class="card-img-top"height="400px" style="object-fit:cover;" src="{{blogpost.cover.url}}" alt="{{blogpost.name}}">
+            {% else %}
+            <img class="card-img-top"height="400px" style="object-fit:cover;" src="http://placekitten.com/g/900/400" alt="{{blogpost.name}}">
+            {% endif %}
+            <div class="card-body">
+                <h2 class="card-title">{{blogpost.name}}</h2>
+                <p class="card-text">{{blogpost.description|truncatechars:240}}</p>
+                <a href="{% url 'post' slug=blogpost.pk %}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+                Posted on {{blogpost.created_date|date:"M d, Y"}} in category <u>{{blogpost.category.name}}</u>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-sm-3" style="margin-top:50px;">
+        <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+                <div class="row">
+                    <p style="padding:0px 0px;">
+                    <ul>
+                    {% for blogcategories in categories %}
+                    <li>
+                        <h6><a href="{% url 'category' slug=blogcategories.slug %}">{{blogcategories.name}} ({{blogcategories.post_count}})</a></h6>
+                    </li>
+                    {% endfor %}
+                </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

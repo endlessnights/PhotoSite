@@ -74,27 +74,8 @@ class userprofile(models.Model):
     fblink = models.URLField(default='', max_length=254, verbose_name='Facebook', blank=True)
     tglink = models.URLField(default='', max_length=254, verbose_name='Telegram', blank=True)
     email = models.EmailField(default='', max_length=254, verbose_name='E-mail', blank=True)
-
-    def __str__(self):
-        return self.user.username
-
-    class Meta:
-        verbose_name = 'профиль пользователя'
-        verbose_name_plural = 'профили пользователей'
-
-
-def create_profile(sender, **kwargs):
-    user = kwargs['instance']
-    if kwargs['created']:
-        user_profile = userprofile.objects.create(user=user)
-
-
-post_save.connect(create_profile, sender=User)
-
-
-class sitesettings(models.Model):
-    name = models.CharField(default='', max_length=127, blank=True, verbose_name='Название сайта')
-    subname = models.CharField(default='', max_length=127, blank=True, verbose_name='Подзаголовок сайта')
+    sitename = models.CharField(default='', max_length=127, blank=True, verbose_name='Название сайта')
+    sitesubname = models.CharField(default='', max_length=127, blank=True, verbose_name='Подзаголовок сайта')
     icon = models.FileField(
         default='', upload_to='uploaded/favicon/', max_length=254, blank=True, verbose_name='Favicon'
     )
@@ -108,12 +89,17 @@ class sitesettings(models.Model):
     customcss = models.TextField(default='', max_length=127, blank=True, verbose_name='Кастомные CSS')
 
     def __str__(self):
-        return self.name
-
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
+        return self.user.username
 
     class Meta:
-        verbose_name = 'настройки сайта'
-        verbose_name_plural = 'настройки сайта'
+        verbose_name = 'глобальные настройки'
+        verbose_name_plural = 'глобальные настройки'
+
+
+def create_profile(sender, **kwargs):
+    user = kwargs['instance']
+    if kwargs['created']:
+        user_profile = userprofile.objects.create(user=user)
+
+
+post_save.connect(create_profile, sender=User)

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import post, sitesettings
+from .models import post
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model

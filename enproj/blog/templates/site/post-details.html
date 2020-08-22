@@ -1,0 +1,46 @@
+{% extends 'site/base.html' %}
+{% block content %}
+<div class="row">
+    <!--<div class="col-sm-12" style="margin:30px;">
+        <h3 align="left">{{data.name}}</h3>
+    </div>-->
+    <div class="row" style="margin:30px;">
+        <div class="card mb-4">
+            <div class="row">
+                {% if blogpost.cover %}
+                <img class="card-img-top"height="400px" style="object-fit:cover;" src="{{blogpost.cover.url}}" alt="{{blogpost.name}}">
+                {% else %}
+                <img class="card-img-top"height="400px" style="object-fit:cover;" src="http://placekitten.com/g/900/400" alt="{{blogpost.name}}">
+                {% endif %}
+                <div class="col-sm-8">
+                    <div class="card-body">
+                        <h2 class="card-title">{{data.name}}</h2>
+                        <p class="card-text" align="justify">{{data.description}} {{data.desc}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="margin-top:50px;margin-right:30px;">
+                    <div class="card my-4">
+                        <h5 class="card-header">Categories</h5>
+                        <div class="card-body">
+                            <div class="row">
+                                <p style="padding:0px 0px;">
+                                <ul>
+                                    {% for blogcategories in categories %}
+                                    <li>
+                                        <h6><a href="{% url 'category' slug=blogcategories.slug %}">{{blogcategories.name}} ({{blogcategories.post_count}})</a></h6>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                Posted on {{data.created_date|date:"M d, Y"}} in category <u><a href="{% url 'category' slug=data.category.slug %}">{{data.category.name}}</a></u>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -3,6 +3,7 @@
 <head>
     {% load static %}
 	<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="shortcut icon" href="{{user.userprofile.icon.url}}" type="image/x-icon">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -14,14 +15,20 @@
 	<script type="text/javascript" src="{% static 'js/animated-masonry-gallery.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/lightbox.min.js' %}"></script>
 	<meta charset="UTF-8">
-    <title>SXRT gallery</title>
+    {%if user.userprofile.sitename %}
+    <title>{{user.userprofile.sitename}} | {{user.userprofile.sitesubname}}</title>
+    {% else %}
+    <title>Gallery | 2020</title>
+    {% endif %}
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ededef;">
       <!-- background-color: #e3f2fd; -->
-      <a class="navbar-brand" href="/" style="background-color: #6bafb8; padding:10px;">SXRT gallery</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+
+    <a class="navbar-brand" href="/" style="background-color: #6bafb8; padding:10px;">{%if user.userprofile.sitename %}{{user.userprofile.sitename}}{% else %}Gallery | 2020{% endif %}</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
     <div class="collapse navbar-collapse" id="navbarText">

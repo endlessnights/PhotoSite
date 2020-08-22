@@ -1,18 +1,84 @@
 {% extends 'site/base.html' %}
 {% block content %}
-
-{% for blogpost in posts %}
+{% load static %}
 <div class="row">
-    <div class="col-sm-2">
-        <div class="card" style="width: 28rem;">
-            <img src="{{blogpost.cover.url}}" class="card-img-top" alt="...">
+    <div class="col-sm-8" style="margin-left:30px;">
+        <div class="cols-sm-4">
+            <h1 style="margin:15px;">Blog</h1>
+        </div>
+        {% for blogpost in posts %}
+        <div class="col-sm-12">
+        <div class="card mb-4">
+            {% if blogpost.cover %}
+            <img class="card-img-top"height="400px" style="object-fit:cover;" src="{{blogpost.cover.url}}" alt="{{blogpost.name}}">
+            {% else %}
+            <img class="card-img-top"height="400px" style="object-fit:cover;" src="http://placekitten.com/g/900/400" alt="{{blogpost.name}}">
+            {% endif %}
             <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <h2 class="card-title">{{blogpost.name}}</h2>
+                <p class="card-text">{{blogpost.description}}</p>
+                <a href="{% url 'post' slug=blogpost.pk %}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+                Posted on {{blogpost.created_date|date:"M d, Y"}} in category <u><a href="{% url 'category' slug=blogpost.category.slug %}">{{blogpost.category.name}}</a></u>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-sm-3" style="margin-top:50px;">
+        <div class="card my-4">
+            <h5 class="card-header">About me</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        {% if user.userprofile.avatar %}
+                        <img class="mx-auto d-block" style="border-radius:150px;margin-bottom:30px;" src="{{user.userprofile.avatar.url}}">
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-12">
+                        {%if user.userprofile.description %}
+                        <p style="padding:0px 10px;" align="justify">
+                            Hello, my name is {{user.get_full_name}}.<br>
+                            {{user.userprofile.description}}</p><br>
+                        {% endif %}
+                    </div>
+                    <div class="row mx-auto">
+                    <div class="col-sm-4">
+                        {%if user.userprofile.vklink %}
+                        <a href="{{user.userprofile.vklink}}" target="_blank"><img width="48" src="{% static 'img/vk.svg' %}"></a>
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-4">
+                        {%if user.userprofile.fblink %}
+                        <a href="{{user.userprofile.fblink}}" target="_blank"><img width="40" src="{% static 'img/fb.svg' %}"></a>
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-4">
+                        {%if user.userprofile.tglink %}
+                       <a href="{{user.userprofile.tglink}}" target="_blank"> <img width="48" src="{% static 'img/tg.svg' %}"></a>
+                        {% endif %}
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card my-4">
+            <h5 class="card-header">Categories</h5>
+            <div class="card-body">
+                <div class="row">
+                    <p style="padding:0px 0px;">
+                    {% for blogcategories in categories %}
+                    <div class="col-sm-12">
+                        <a href="{% url 'category' slug=blogcategories.slug %}">
+                            <h6>{{blogcategories.name}} ({{blogcategories.post_count}})</h6>
+                        </a>
+                    </div>
+                    {% endfor %}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 </div>
-{% endfor %}
 {% endblock %}

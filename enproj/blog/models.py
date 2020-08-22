@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
+from tinymce.models import HTMLField
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
@@ -27,23 +28,24 @@ class blogcategories(models.Model):
 
 
 class blogpost(models.Model):
-    slug = models.SlugField(verbose_name='Пермалинк', max_length=50, unique=True)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Автор', default='root')
-    name = models.CharField(max_length=127, verbose_name='Заголовок')
-    description = models.TextField(max_length=800, verbose_name='Описание', blank=True)
+    slug = models.SlugField(verbose_name='Permalink', max_length=50, blank=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Author')
+    name = models.CharField(max_length=127, verbose_name='Post title')
+    description = models.TextField(max_length=24000, verbose_name='Post description', blank=True)
+    desc = HTMLField(verbose_name='TinyMce Editor', blank=True)
     cover = models.ImageField(
-        upload_to='blog/covers/', verbose_name='Обложка', max_length=200
+        upload_to='blog/covers/', verbose_name='Post cover image', max_length=200, blank=True
     )
-    videolink = models.URLField(default='', verbose_name='Ссылка на видео', blank=True)
-    created_date = models.DateTimeField(default=timezone.now, verbose_name='Дата/время создания')
-    status = models.BooleanField(default=True, verbose_name='Опубликовано')
+    videolink = models.URLField(default='', verbose_name='Post video cover', blank=True)
+    created_date = models.DateTimeField(default=timezone.now, verbose_name='Post created Date/time')
+    status = models.BooleanField(default=True, verbose_name='Published')
     category = models.ForeignKey(
         blogcategories,
-        verbose_name='Категория',
+        verbose_name='category',
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        related_name='blogcategory',
+        related_name='blogpost',
     )
 
     def __str__(self):
