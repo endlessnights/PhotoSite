@@ -29,6 +29,7 @@ class subcategory(models.Model):
     order = models.IntegerField(verbose_name='Порядок', null=True, blank=True)
     name = models.CharField(max_length=127, verbose_name='Название категории', blank=True)
     description = models.TextField(max_length=800, verbose_name='Описание категории', blank=True)
+    gmap = models.BooleanField(verbose_name='Use Google Maps', blank=True, default=False)
     category = models.ForeignKey(
         categories,
         verbose_name='категория',
@@ -67,7 +68,7 @@ class post(models.Model):
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        related_name='posts',
+        related_name='subcategory',
         default=5,
     )
     image = models.ImageField(

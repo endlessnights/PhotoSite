@@ -5,7 +5,16 @@
 <div style="background-color: #ba3a39;width:10%;margin-left:1%;margin-bottom:2px;"> </div>
 <h2 style="margin-left:35px;">{{post.category}}</h2>
 <div style="background-color: #ba3a39;width:10%;margin-left:2%;margin-bottom:10px;"> </div>
+
+<div class="gmap">
+    {% if post.category.gmap %}
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11530.743690975247!2d7.417097695447224!3d43.73785106589443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12cdc26f7b3f8531%3A0x74f7784c3ac49cfc!2z0JzQvtC90LDQutC-!5e0!3m2!1sru!2sru!4v1599317293458!5m2!1sru!2sru" width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    {% endif %}
+</div>
+
 {% endif %}
+{% endfor %}
+{% for post in showpics %}
 {% endfor %}
 <div id="gallery-content-center" style="position: relative; overflow: hidden; height: 1200px;" class="gallery-content-center-full isotope">
     {% for post in showpics %}

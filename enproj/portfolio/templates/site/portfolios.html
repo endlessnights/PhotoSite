@@ -2,26 +2,26 @@
 {% block content %}
 {% load static %}
 <body class="bg-portfolios">
-<div style="background-color: #ba3a39;width:10%;margin-left:1%;margin-bottom:2px;margin-top:10px;"> </div>
+<!--<div style="background-color: #ba3a39;width:10%;margin-left:1%;margin-bottom:2px;margin-top:10px;"> </div>
 <h2 style="margin-left:35px;color:#1c2d34;">Galleries:</h2>
-<div style="background-color: #ba3a39;width:10%;margin-left:2%;"> </div>
-<div class="row" style="margin:30px;">
+<div style="background-color: #ba3a39;width:10%;margin-left:2%;"> </div>-->
+<div class="row" style="margin-left:5em;margin-right:5em;margin-top:2em;margin-bottom:2em;">
     {% for categories in getportfolios %}
     <div class="col-sm-4">
         <a href="{{categories.slug}}">
+        <div class="col-sm-12">
             {% if categories.cover %}
-                <img class="portfolio-grid-image" height="600" width="600" src="{{categories.cover.url}}">
+                <img class="portfolio-grid-image" height="600" width="600" src="{{categories.cover.url}}" style="box-shadow: 4px 4px 5px 0px #BCBCBC;">
             {% endif %}
-        <div class="row">
-            <div class="col-sm-6">
-                <h5 style="color:#1c2d34;">{{categories.name}}</h5>
-            </div>
-            <div class="col-sm-6">
-                {%if categories.posts_count >= 1 %}
-                <p style="float:right"><i>Post count: {{categories.posts_count}}</i></p>
-                {% endif %}
-            </div>
-        </div></a>
+        </div>
+        <div class="col-sm-8">
+            <h5 style="color:#1c2d34;">{{categories.name}}</h5>
+            {%if categories.posts_count >= 1 %}
+                <i>Post count: {{categories.posts_count}}</i>
+            {% endif %}
+        </div>
+        </a>
+        <br>
     </div>
     {% endfor %}
 </div>

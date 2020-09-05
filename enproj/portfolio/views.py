@@ -15,7 +15,7 @@ class showportfolios(View):
 
 class category(View):
     def get(self, request, getpfcategory):
-        showposts = subcategory.objects.annotate(posts_count=Count('posts')).filter(category__slug=getpfcategory)
+        showposts = subcategory.objects.annotate(posts_count=Count('subcategory')).filter(category__slug=getpfcategory)
         return render(request, 'site/categories.html', {
             'showposts': showposts,
         }

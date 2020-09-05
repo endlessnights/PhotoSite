@@ -3,12 +3,10 @@
 {% for subcategory in showposts %}
 {% if forloop.first %}
         {% load static %}
-<div class="row" style="margin-left:30px;">
-    <div class="col-sm-2">
-        <h2>{{subcategory.category}}</h2>
-    </div>
-    <div class="col-sm-10" style="text-align:left;">
-        {{subcategory.category.description}}
+<div class="category-parallax" style="background: url({{subcategory.category.cover.url}});background-size: cover; background-attachment: fixed;background-position:center center;">
+    <div class="col-sm-6" style="padding:4em;">
+        <h1 style="color:#eeeeee;">{{subcategory.category}}</h1><br>
+        <h5 style="color:#eeeeee;">{{subcategory.category.description}}</h5>
     </div>
 </div>
     {% endif %}
