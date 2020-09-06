@@ -6,12 +6,15 @@
             <h1 style="margin:15px;">Blog</h1>
         </div>
         {% for blogpost in categoryposts %}
+        {% if forloop.first %}
+        <div style="margin:1em;">Results for Category: <u>{{blogpost.category.name}}</u></div>
+        {% endif %}
         <div class="col-sm-12">
         <div class="card mb-4">
             {% if blogpost.cover %}
             <img class="card-img-top"height="400px" style="object-fit:cover;" src="{{blogpost.cover.url}}" alt="{{blogpost.name}}">
             {% else %}
-            <img class="card-img-top"height="400px" style="object-fit:cover;" src="http://placekitten.com/g/900/400" alt="{{blogpost.name}}">
+            <img class="card-img-top"height="400px" style="object-fit:cover;" src="https://sun9-65.userapi.com/c631221/v631221749/16954/lAvd-ZWWRXU.jpg" alt="{{blogpost.name}}">
             {% endif %}
             <div class="card-body">
                 <h2 class="card-title">{{blogpost.name}}</h2>
@@ -25,7 +28,7 @@
         </div>
         {% endfor %}
     </div>
-    <div class="col-sm-3" style="margin-top:50px;">
+    <div class="col-sm-3" style="margin-top:5.9em;">
         <div class="card my-4">
             <h5 class="card-header">Categories</h5>
             <div class="card-body">

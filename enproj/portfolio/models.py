@@ -30,6 +30,7 @@ class subcategory(models.Model):
     name = models.CharField(max_length=127, verbose_name='Название категории', blank=True)
     description = models.TextField(max_length=800, verbose_name='Описание категории', blank=True)
     gmap = models.BooleanField(verbose_name='Use Google Maps', blank=True, default=False)
+    coords = models.CharField(verbose_name='GPS coords', blank=True, max_length=20)
     category = models.ForeignKey(
         categories,
         verbose_name='категория',
@@ -60,7 +61,7 @@ class post(models.Model):
                                related_name='pfauthor')
     slug = models.AutoField(primary_key=True)
     order = models.IntegerField(verbose_name='Порядок', null=True, blank=True)
-    name = models.CharField(max_length=127, verbose_name='Заголовок')
+    name = models.CharField(max_length=127, verbose_name='Заголовок', blank=True)
     description = models.TextField(max_length=800, verbose_name='Описание', blank=True)
     category = models.ForeignKey(
         subcategory,
