@@ -3,8 +3,15 @@
 {% load static %}
 <div class="row">
     <div class="col-sm-8" style="margin-left:30px;">
-        <div class="cols-sm-4">
-            <h1 style="margin:15px;">Blog</h1>
+        <div class="row">
+            <div class="col-sm-2" style="margin-left:15px;">
+                <h1>Blog</h1>
+            </div>
+            {% if request.user.is_superuser %}
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-warning"><a href="add">Add New Post</a></button>
+            </div><br>
+            {% endif %}
         </div>
         {% for blogpost in posts %}
         <div class="col-sm-12">
@@ -12,7 +19,7 @@
             {% if blogpost.cover %}
             <img class="card-img-top"height="400px" style="object-fit:cover;" src="{{blogpost.cover.url}}" alt="{{blogpost.name}}">
             {% else %}
-            <img class="card-img-top"height="400px" style="object-fit:cover;" src="http://placekitten.com/g/900/400" alt="{{blogpost.name}}">
+            <img class="card-img-top"height="400px" style="object-fit:cover;" src="https://sun9-65.userapi.com/c631221/v631221749/16954/lAvd-ZWWRXU.jpg" alt="{{blogpost.name}}">
             {% endif %}
             <div class="card-body">
                 <h2 class="card-title">{{blogpost.name}}</h2>

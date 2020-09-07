@@ -8,7 +8,7 @@ from django.views import View
 
 
 def blog(request):
-    posts = blogpost.objects.filter(status=True).all()
+    posts = blogpost.objects.filter(status=True).all().order_by('created_date').reverse()
     categories = blogcategories.objects.all().annotate(post_count=Count('blogpost'))
     return render(request, 'site/bloglist.html', {
         'posts': posts,
