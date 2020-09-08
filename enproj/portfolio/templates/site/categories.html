@@ -4,9 +4,16 @@
 {% if forloop.first %}
         {% load static %}
 <div class="category-parallax" style="background: url({{subcategory.category.cover.url}});background-size: cover; background-attachment: fixed;background-position:center center;">
-    <div class="col-sm-6" style="padding:4em;">
-        <h1 style="color:#eeeeee;">{{subcategory.category}}</h1><br>
-        <h5 style="color:#eeeeee;">{{subcategory.category.description}}</h5>
+    <div class="row">
+        <div class="col-sm-6" style="padding:3em 0em 1em 4em">
+            <h1 style="color:#eeeeee;">{{subcategory.category}}</h1><br>
+            <h5 style="color:#eeeeee;">{{subcategory.category.description}}</h5>
+        </div>
+        {% if request.user.is_superuser %}
+        <div class="col-sm-12" style="padding-left:4em;">
+            <button type="button" class="btn btn-warning"><a href="/gallery-category-edit">Add New Category</a></button>
+        </div>
+        {% endif %}
     </div>
 </div>
     {% endif %}

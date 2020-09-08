@@ -1,0 +1,44 @@
+{% extends 'site/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row" style="margin:30px;">
+        <div class="col-sm-12">
+            <h2>Main - Gallery category Edit(New)</h2>
+        </div>
+        <div class="col-sm-4">
+            {{ form.name|as_crispy_field }}
+        </div>
+        <div class="col-sm-4">
+            {{ form.category|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row" style="margin:30px;">
+        <div class="col-sm-4">
+            {{ form.slug|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row" style="margin:30px;">
+        <div class="col-sm-12">
+            <h2>Data</h2>
+        </div>
+        <div class="col-sm-6">
+            {{ form.description|as_crispy_field }}
+        </div>
+        <div class="col-sm-4">
+            {{ form.cover|as_crispy_field }}
+        </div>
+        <div class="col-sm-4">
+            {{ form.gmap|as_crispy_field }}
+        </div>
+        <div class="col-sm-4">
+            {{ form.coords|as_crispy_field }}
+        </div>
+        <div class="col-sm-12">
+            {{ form.status|as_crispy_field }}
+        </div>
+    </div>
+    <button style="margin-left:2em;" type="submit" class="btn btn-primary">Сохранить данные ТТ</button>
+</form>
+{% endblock %}

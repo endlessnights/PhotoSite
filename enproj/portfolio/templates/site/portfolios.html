@@ -6,6 +6,11 @@
 <h2 style="margin-left:35px;color:#1c2d34;">Galleries:</h2>
 <div style="background-color: #ba3a39;width:10%;margin-left:2%;"> </div>-->
 <div class="row" style="margin-left:5em;margin-right:5em;margin-top:2em;margin-bottom:2em;">
+    {% if request.user.is_superuser %}
+    <div class="col-sm-12">
+        <button style="margin-left:1em;" type="button" class="btn btn-warning"><a href="/gallery-edit">Add New Gallery</a></button>
+    </div><br><br>
+    {% endif %}
     {% for categories in getportfolios %}
     <div class="col-sm-4">
         <a href="{{categories.slug}}">
@@ -24,6 +29,11 @@
         <br>
     </div>
     {% endfor %}
+    {% if request.user.is_superuser %}
+    <div class="col-sm-12">
+        <button style="margin-left:1em;" type="button" class="btn btn-warning"><a href="/gallery-edit">Add New Gallery</a></button>
+    </div><br><br>
+    {% endif %}
 </div>
 </body>
 {% endblock %}

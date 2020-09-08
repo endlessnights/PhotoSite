@@ -8,6 +8,7 @@ class categories(models.Model):
     order = models.IntegerField(verbose_name='Порядок', null=True, blank=True)
     name = models.CharField(max_length=127, verbose_name='Название категории', blank=True)
     description = models.TextField(max_length=800, verbose_name='Описание категории', blank=True)
+    status = models.BooleanField(default=True, verbose_name='Опубликовано', blank=True)
     cover = models.ImageField(
         upload_to='uploaded/portfolio/catcovers/', verbose_name='Обложка категории', max_length=200, blank=True
     )
@@ -31,6 +32,7 @@ class subcategory(models.Model):
     description = models.TextField(max_length=800, verbose_name='Описание категории', blank=True)
     gmap = models.BooleanField(verbose_name='Use Google Maps', blank=True, default=False)
     coords = models.CharField(verbose_name='GPS coords', blank=True, max_length=20)
+    status = models.BooleanField(default=True, verbose_name='Опубликовано', blank=True)
     category = models.ForeignKey(
         categories,
         verbose_name='категория',
