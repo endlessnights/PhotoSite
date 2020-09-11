@@ -67,12 +67,13 @@ def newimage(request, getpfcategory, getsubcategory):
     if request.method == "POST":
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.created_date = timezone.now()
-            post.category = getsubcategory
-            post.save()
-        return redirect('http://127.0.0.1:8000/gallery/travel/rome/')
+            postd = form.save(commit=False)
+            postd.author = request.user
+            #postd.category = getsubcategory
+            #post.category = category.objects.get(slug=getsubcategory)
+            postd.created_date = timezone.now()
+            postd.save()
+        return redirect('/')
     else:
         form = ImageForm()
     return render(request, 'site/gallery-upload-images.html',

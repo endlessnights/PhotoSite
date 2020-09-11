@@ -3,42 +3,52 @@
 {% load crispy_forms_tags %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class="row" style="margin:30px;">
-        <div class="col-sm-12">
-            <h2>Main - Gallery category Edit(New)</h2>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="row" style="margin:30px;">
+                <div class="col-sm-12">
+                    <h2>Main - Gallery category Edit(New)</h2>
+                </div>
+                <div class="col-sm-4">
+                    {{ form.name|as_crispy_field }}
+                </div>
+                <div class="col-sm-2">
+                    {{ form.slug|as_crispy_field }}
+                </div>
+                <div class="col-sm-4">
+                    {{ form.category|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row" style="margin:30px;">
+                <div class="col-sm-12">
+                    <h2>Data</h2>
+                </div>
+                <div class="col-sm-6">
+                    {{ form.description|as_crispy_field }}
+                </div>
+                <div class="col-sm-6">
+                    {{ form.cover|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row" style="margin:30px;">
+                <div class="col-sm-2">
+                    {{ form.gmap|as_crispy_field }}
+                </div>
+                <div class="col-sm-4">
+                    {{ form.coords|as_crispy_field }}
+                </div>
+                <div class="col-sm-12">
+                    {{ form.status|as_crispy_field }}
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary">Сохранить данные</button>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-4">
-            {{ form.name|as_crispy_field }}
-        </div>
-        <div class="col-sm-4">
-            {{ form.category|as_crispy_field }}
+        <div class="col-sm-4" style="padding:10px;">
+            <img src="https://images.unsplash.com/photo-1484821582734-6c6c9f99a672?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=6000" height="100%" width="100%"
+                 style="border-radius:10px;object-fit:cover;">
         </div>
     </div>
-    <div class="row" style="margin:30px;">
-        <div class="col-sm-4">
-            {{ form.slug|as_crispy_field }}
-        </div>
-    </div>
-    <div class="row" style="margin:30px;">
-        <div class="col-sm-12">
-            <h2>Data</h2>
-        </div>
-        <div class="col-sm-6">
-            {{ form.description|as_crispy_field }}
-        </div>
-        <div class="col-sm-4">
-            {{ form.cover|as_crispy_field }}
-        </div>
-        <div class="col-sm-4">
-            {{ form.gmap|as_crispy_field }}
-        </div>
-        <div class="col-sm-4">
-            {{ form.coords|as_crispy_field }}
-        </div>
-        <div class="col-sm-12">
-            {{ form.status|as_crispy_field }}
-        </div>
-    </div>
-    <button style="margin-left:2em;" type="submit" class="btn btn-primary">Сохранить данные ТТ</button>
 </form>
 {% endblock %}

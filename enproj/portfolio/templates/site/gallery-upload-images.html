@@ -11,21 +11,21 @@
             {{ form.name|as_crispy_field }}
         </div>
         <div class="col-sm-4">
-
+            {{ form.category|as_crispy_field }}
         </div>
     </div>
     <div class="row" style="margin:30px;">
+        <div class="col-sm-4">
+            {{ form.videolink|as_crispy_field }}
+        </div>
+        <div class="col-sm-4">
+            {{ form.image|as_crispy_field }}
+        </div>
         <div class="col-sm-12">
             <h2>Data</h2>
         </div>
         <div class="col-sm-6">
             {{ form.description|as_crispy_field }}
-        </div>
-        <div class="col-sm-4">
-            {{ form.image|as_crispy_field }}
-        </div>
-        <div class="col-sm-4">
-            {{ form.videolink|as_crispy_field }}
         </div>
         <div class="col-sm-12">
             {{ form.status|as_crispy_field }}

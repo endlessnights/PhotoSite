@@ -32,8 +32,8 @@ class ImageForm(forms.ModelForm):
         fields = ('slug',
                   'name',
                   'description',
-                  'image',
                   'category',
+                  'image',
                   'videolink',
                   'status',
                   )
