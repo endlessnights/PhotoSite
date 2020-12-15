@@ -21,8 +21,8 @@ class categories(models.Model):
         self.save()
 
     class Meta:
-        verbose_name = 'category'
-        verbose_name_plural = 'categories'
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
 
 class subcategory(models.Model):
@@ -54,8 +54,8 @@ class subcategory(models.Model):
         self.save()
 
     class Meta:
-        verbose_name = 'sub-category'
-        verbose_name_plural = 'sub-categories'
+        verbose_name = 'Subcategory'
+        verbose_name_plural = 'Subcategories'
 
 
 class post(models.Model):
@@ -89,5 +89,5 @@ class post(models.Model):
         self.save()
 
     class Meta:
-        verbose_name = 'image post'
-        verbose_name_plural = 'image posts'
+        verbose_name = 'Image'
+        verbose_name_plural = 'Images'
