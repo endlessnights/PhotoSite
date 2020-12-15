@@ -23,8 +23,8 @@ class blogcategories(models.Model):
         self.save()
 
     class Meta:
-        verbose_name = 'категорию'
-        verbose_name_plural = 'категории'
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
 
 
 class blogpost(models.Model):
@@ -55,5 +55,5 @@ class blogpost(models.Model):
         self.save()
 
     class Meta:
-        verbose_name = 'запись блога'
-        verbose_name_plural = 'записи блога'
+        verbose_name = 'Post'
+        verbose_name_plural = 'Posts'
