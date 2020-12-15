@@ -7,15 +7,15 @@
     <div class="row" style="margin:30px;">
         <div class="card mb-4">
             <div class="row">
-                {% if blogpost.cover %}
-                <img class="card-img-top"height="400px" style="object-fit:cover;" src="{{blogpost.cover.url}}" alt="{{blogpost.name}}">
+                {% if data.cover %}
+                <img class="card-img-top"height="400px" style="object-fit:cover;" src="{{data.cover.url}}" alt="{{data.name}}">
                 {% else %}
                 <img class="card-img-top"height="400px" style="object-fit:cover;" src="https://sun9-65.userapi.com/c631221/v631221749/16954/lAvd-ZWWRXU.jpg" alt="{{blogpost.name}}">
                 {% endif %}
                 <div class="col-sm-8">
                     <div class="card-body">
                         <h2 class="card-title">{{data.name}}</h2>
-                        <p class="card-text" align="justify">{{data.description}} {{data.desc}}</p>
+                        <p class="card-text" align="justify">{{data.description}}</p>
                     </div>
                 </div>
                 <div class="col-sm-3" style="margin-top:50px;margin-right:30px;">

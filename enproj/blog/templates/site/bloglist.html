@@ -23,7 +23,7 @@
             {% endif %}
             <div class="card-body">
                 <h2 class="card-title">{{blogpost.name}}</h2>
-                <p class="card-text">{{blogpost.description}}</p>
+                <p class="card-text">{{blogpost.description|truncatechars:240}}</p>
                 <a href="{% url 'post' slug=blogpost.pk %}" class="btn btn-primary">Read More &rarr;</a>
             </div>
             <div class="card-footer text-muted">
@@ -53,17 +53,17 @@
                     <div class="row mx-auto">
                     <div class="col-sm-4">
                         {%if user.userprofile.vklink %}
-                        <a href="{{user.userprofile.vklink}}" target="_blank"><img width="48" src="{% static 'img/vk.svg' %}"></a>
+                        <a href="{{user.userprofile.vklink}}" target="_blank"><img width="48" src="{% static 'img/vk.png' %}"></a>
                         {% endif %}
                     </div>
                     <div class="col-sm-4">
                         {%if user.userprofile.fblink %}
-                        <a href="{{user.userprofile.fblink}}" target="_blank"><img width="40" src="{% static 'img/fb.svg' %}"></a>
+                        <a href="{{user.userprofile.fblink}}" target="_blank"><img width="48" src="{% static 'img/fb.png' %}"></a>
                         {% endif %}
                     </div>
                     <div class="col-sm-4">
                         {%if user.userprofile.tglink %}
-                       <a href="{{user.userprofile.tglink}}" target="_blank"> <img width="48" src="{% static 'img/tg.svg' %}"></a>
+                       <a href="{{user.userprofile.tglink}}" target="_blank"> <img width="48" src="{% static 'img/tg.png' %}"></a>
                         {% endif %}
                     </div>
                     </div>

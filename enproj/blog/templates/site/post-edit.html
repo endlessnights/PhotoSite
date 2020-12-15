@@ -21,9 +21,6 @@
         <div class="col-sm-6">
             {{ form.description|as_crispy_field }}
         </div>
-        <div class="col-sm-6">
-            {{ form.desc|as_crispy_field }}
-        </div>
         <div class="col-sm-4">
             {{ form.videolink|as_crispy_field }}
         </div>
@@ -34,6 +31,6 @@
             {{ form.status|as_crispy_field }}
         </div>
     </div>
-    <button style="margin-left:2em;" type="submit" class="btn btn-primary">Сохранить данные ТТ</button>
+    <button style="margin-left:2em;" type="submit" class="btn btn-primary">Update Post</button>
 </form>
 {% endblock %}
