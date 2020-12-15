@@ -17,9 +17,9 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(blogpost)
 class PostAdmin(admin.ModelAdmin):
     list_display = [
+        'name',
         'slug',
         'author',
-        'name',
         'desc',
         'description',
         'cover',
