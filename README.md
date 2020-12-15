@@ -5,6 +5,4 @@ Djangro Photo gallery CMS with:
 3. Categories with Sub-categories
 4. Sub-categories with images
 
-There some frontend pages to add categories and images where you can add:
-
-Title, slug, description, cover image and put Publish check.
+Frontend pages to add categories, sub-categories and images:
