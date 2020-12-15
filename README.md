@@ -6,3 +6,5 @@ Djangro Photo gallery CMS with:
 4. Sub-categories with images
 
 Frontend pages to add categories, sub-categories and images:
+
+![alt text](https://github.com/endlessnights/enproj/blob/master/enproj/media/uploaded/add_portfolio_item.png?raw=true)
