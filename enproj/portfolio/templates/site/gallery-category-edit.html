@@ -1,13 +1,14 @@
 {% extends 'site/base.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
+{% if request.user.is_superuser %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="row">
         <div class="col-sm-8">
             <div class="row" style="margin:30px;">
                 <div class="col-sm-12">
-                    <h2>Main - Gallery category Edit(New)</h2>
+                    <h2>Add/edit category item</h2>
                 </div>
                 <div class="col-sm-4">
                     {{ form.name|as_crispy_field }}
@@ -41,7 +42,7 @@
                     {{ form.status|as_crispy_field }}
                 </div>
                 <div class="col-sm-12">
-                    <button type="submit" class="btn btn-primary">Сохранить данные</button>
+                    <button type="submit" class="btn btn-primary">Save data</button>
                 </div>
             </div>
         </div>
@@ -51,4 +52,5 @@
         </div>
     </div>
 </form>
+{% endif %}
 {% endblock %}

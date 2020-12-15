@@ -1,6 +1,7 @@
 {% extends 'site/base.html' %}
 {% block content %}
 {% load crispy_forms_tags %}
+{% if request.user.is_superuser %}
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="row" style="margin:30px;">
@@ -31,6 +32,7 @@
             {{ form.status|as_crispy_field }}
         </div>
     </div>
-    <button style="margin-left:2em;" type="submit" class="btn btn-primary">Сохранить данные ТТ</button>
+    <button style="margin-left:2em;" type="submit" class="btn btn-primary">Save data</button>
 </form>
+{% endif %}
 {% endblock %}
