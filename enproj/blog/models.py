@@ -44,7 +44,6 @@ class blogpost(models.Model):
         verbose_name='category',
         on_delete=models.CASCADE,
         blank=True,
-        null=True,
         related_name='blogpost',
     )
 
