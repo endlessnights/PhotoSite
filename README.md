@@ -13,3 +13,4 @@ Frontend pages to add categories, sub-categories and images:
 
 Demo: https://www.endlessnights.ru/
 (Run as Django debug, not nginx, so it so slow)
+Video review and instructions: [WIP]
