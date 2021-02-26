@@ -12,5 +12,5 @@ Frontend pages to add categories, sub-categories and images:
 ![Add image item](https://github.com/endlessnights/enproj/blob/master/enproj/media/uploaded/add_image_item.png?raw=true)
 
 Demo: https://www.endlessnights.ru/
-(Run as Django debug, not nginx, so it so slow)
+(Ran as Django debug, not nginx, so it so slow)
 Video review and instructions: https://youtu.be/PYdsrAfY49Q
